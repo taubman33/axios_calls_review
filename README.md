@@ -17,6 +17,33 @@ Front End Axios Commands :
 ```js
 
 
+//Create 
+   //our initial state for our Create Form
+     const [form, setForm] = useState({
+       name: '',
+       description: ''
+     });
+
+
+    //stately form code
+  
+    const handleForm = async (e) => {
+      await setForm({ ...form, [e.target.name]: e.target.value });
+      console.log(form);
+  };
+
+
+    //actual call
+    const handleCreate = async (e) => {
+      e.preventDefault();
+      await axios.post(`${BASE_URL}/addtip`, form);
+  };
+    
+     
+
+
+
+
 //Read
 
    const getData = async () => {
@@ -31,6 +58,7 @@ Front End Axios Commands :
   const handleDelete = async (e) => {
     e.preventDefault();
     await axios.delete(`${BASE_URL}/<COLLECTION>/${e.target.id}`);
+    window.location.reload();
   };
 
 
