@@ -135,6 +135,7 @@ router.delete('/data/:id', controllers.deleteData);
 
 
 //Delete
+// if '.id' is not working, try '._id'
 
   const handleDelete = async (e) => {
     e.preventDefault();
