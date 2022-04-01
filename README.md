@@ -7,8 +7,8 @@ We will need to create the necessary routes on our back end to match our AXIOS A
 Any information that is in ALL CAPS, "data", or surrounded by <>'s is something that you'll need to fill in with your own respective information based on your project.
 
 
-###Back End :
-Our Controllers
+### Back End :
+First, lets set up our Controllers for our data
 
 
 ```js
@@ -97,7 +97,7 @@ router.delete('/data/:id', controllers.deleteData);
 
 ```
 
-Front End Axios Commands :
+### Front End Axios Commands :
 
 ```js
 
@@ -110,23 +110,19 @@ Front End Axios Commands :
      });
 
 
-    //stately form code
-  
+    //stately forms
     const handleForm = async (e) => {
       await setForm({ ...form, [e.target.name]: e.target.value });
       console.log(form);
   };
 
-
-    //actual call
+    //Axios call, linked to our stately form
     const handleCreate = async (e) => {
       e.preventDefault();
       await axios.post(`${BASE_URL}/add<DATA>`, form);
   };
     
      
-
-
 
 
 //Read
