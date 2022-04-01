@@ -16,6 +16,16 @@ Front End Axios Commands :
 
 ```js
 
+
+//Read
+
+   const getData = async () => {
+    const res = await axios.get(`${BASE_URL}/<COLLECTION>`);
+    setTips(res.data.<DATA_NAME>)/;
+  };
+
+
+
 //Delete
 
   const handleDelete = async (e) => {
