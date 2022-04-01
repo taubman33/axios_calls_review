@@ -7,7 +7,10 @@ We will need to create the necessary routes on our back end to match our AXIOS A
 Any information that is in ALL CAPS, "data", or surrounded by <>'s is something that you'll need to fill in with your own respective information based on your project.
 
 
-Back End Routes :
+###Back End :
+Our Controllers
+
+
 ```js
 
 //Controllers.js
@@ -70,6 +73,26 @@ const deleteData = async (req, res) => {
     return res.status(500).send(error.message);
   }
 };
+
+
+```
+Then we can set up our routes, linked to our controllers
+
+
+```js
+//Routes
+
+const { Router } = require('express');
+const router = Router();
+const controllers = require('../controllers');
+
+router.get('/api', (req, res) => res.send('This is root!'));
+
+router.get('/data', controllers.getAllData);
+router.get('/data/:id', controllers.getdataById);
+router.post('/addData', controllers.createData);
+router.put('/updateData/:id', controllers.updateData);
+router.delete('/data/:id', controllers.deleteData);
 
 
 ```
