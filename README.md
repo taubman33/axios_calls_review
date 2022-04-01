@@ -4,13 +4,38 @@
 Axios is a fantastic library that we can use to run CRUD Functionality in our apps.
 We will need to create the necessary routes on our back end to match our AXIOS Async API calls
 
-Any information that is in ALL CAPS and surrounded by <>'s is something that you'll need to fill in with your own respective information based on your project.
+Any information that is in ALL CAPS, "data", or surrounded by <>'s is something that you'll need to fill in with your own respective information based on your project.
 
 
 Back End Routes :
 ```js
 
 //Controllers.js
+
+const Data = require('../models/data');
+
+const getAllData = async (req, res) => {
+  try {
+    const tips = await Data.find();
+    return res.status(200).json({ data });
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
+const getDataById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = await Data.findById(id);
+    if (data) {
+      return res.status(200).json({ data });
+    }
+    return res.status(404).send('Data with the specified ID does not exist');
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
 
 const createData = async (req, res) => {
   try {
